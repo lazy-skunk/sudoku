@@ -107,11 +107,11 @@ export type Difficulty = "easy" | "medium" | "hard";
 function removalCountForDifficulty(difficulty: Difficulty): number {
   switch (difficulty) {
     case "easy":
-      return 40;
+      return 48;
     case "medium":
-      return 50;
+      return 56;
     case "hard":
-      return 58;
+      return 64;
   }
 }
 
