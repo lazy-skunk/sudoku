@@ -44,7 +44,7 @@ export function SudokuBoard({
             <div
               key={`${rowIndex}-${columnIndex}`}
               className={mergeClassNames(
-                "relative w-12 h-12 border border-foreground/50 flex items-center justify-center",
+                "relative w-[clamp(2rem,10vw,3rem)] h-[clamp(2rem,10vw,3rem)] border border-foreground/50 flex items-center justify-center",
                 rowIndex % 3 === 0 && "border-t-2",
                 columnIndex % 3 === 0 && "border-l-2",
                 rowIndex === 8 && "border-b-2",
@@ -60,7 +60,7 @@ export function SudokuBoard({
                 pattern="[1-9]*"
                 maxLength={1}
                 className={mergeClassNames(
-                  "w-full h-full text-center text-xl outline-none bg-transparent",
+                  "w-full h-full text-center text-[clamp(1.5rem,5vw,2.5rem)] outline-none bg-transparent",
                   cell.fixed ? "font-bold" : "text-green-500"
                 )}
                 value={cell.value === 0 ? "" : String(cell.value)}
