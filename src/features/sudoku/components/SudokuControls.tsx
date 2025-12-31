@@ -25,7 +25,7 @@ export function SudokuControls({
   onToggleVerifyResultVisibility,
 }: SudokuControlsProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center justify-center gap-2">
       {DIFFICULTIES.map((difficultyOption) => (
         <button
           key={difficultyOption}
@@ -39,7 +39,7 @@ export function SudokuControls({
         </button>
       ))}
 
-      <div className="mx-2 h-6 w-px bg-foreground/50" />
+      <div className="mx-2 h-px w-full bg-foreground/50 sm:h-6 sm:w-px" />
 
       <button className="px-3 py-2 rounded border" onClick={onReset}>
         Reset
