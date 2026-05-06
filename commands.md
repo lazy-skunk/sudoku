@@ -1,0 +1,31 @@
+## npm scripts
+
+```bash
+# App
+npm run dev
+npm run build
+npm run start
+
+# Quality
+npm run lint
+npm run format
+npm run format:check
+
+# Test
+npm test
+```
+
+## Docker
+
+```bash
+docker-compose build --no-cache
+docker-compose up --build -d
+docker-compose stop
+docker-compose down --rmi all --volumes
+```
+
+## Git
+
+```bash
+git config core.hooksPath .githooks
+```

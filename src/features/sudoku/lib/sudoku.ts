@@ -12,7 +12,7 @@ export function cloneBoard(board: Board): Board {
 
 export function emptyBoard(): Board {
   return createZeroBasedIndices(GRID_SIZE).map(() =>
-    createZeroBasedIndices(GRID_SIZE).map(() => 0)
+    createZeroBasedIndices(GRID_SIZE).map(() => 0),
   );
 }
 
@@ -20,7 +20,7 @@ function isSafe(
   board: Board,
   rowIndex: number,
   columnIndex: number,
-  value: number
+  value: number,
 ): boolean {
   for (let index = 0; index < GRID_SIZE; index++) {
     if (board[rowIndex][index] === value) return false;

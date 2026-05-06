@@ -65,9 +65,7 @@ export function SudokuApp() {
         solutionBoard={solutionBoard}
       />
 
-      {isSolutionVisible && (
-        <SudokuSolution solutionBoard={solutionBoard} />
-      )}
+      {isSolutionVisible && <SudokuSolution solutionBoard={solutionBoard} />}
     </main>
   );
 }

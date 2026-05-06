@@ -21,14 +21,14 @@ export function SudokuSolution({ solutionBoard }: SudokuSolutionProps) {
                 rowIndex % 3 === 0 && "border-t-2",
                 columnIndex % 3 === 0 && "border-l-2",
                 rowIndex === 8 && "border-b-2",
-                columnIndex === 8 && "border-r-2"
+                columnIndex === 8 && "border-r-2",
               )}
             >
               <span className="text-[clamp(1.5rem,5vw,2.5rem)] font-bold">
                 {value === 0 ? "" : String(value)}
               </span>
             </div>
-          ))
+          )),
         )}
       </div>
     </div>

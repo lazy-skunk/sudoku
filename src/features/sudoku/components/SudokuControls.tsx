@@ -31,7 +31,7 @@ export function SudokuControls({
           key={difficultyOption}
           className={mergeClassNames(
             "px-3 py-2 rounded border capitalize",
-            difficulty === difficultyOption && "border-green-500"
+            difficulty === difficultyOption && "border-green-500",
           )}
           onClick={() => onNewGame(difficultyOption)}
         >
@@ -55,7 +55,7 @@ export function SudokuControls({
       <button
         className={mergeClassNames(
           "px-3 py-2 rounded border",
-          isVerifyResultVisible && "border-green-500"
+          isVerifyResultVisible && "border-green-500",
         )}
         onClick={onToggleVerifyResultVisibility}
       >

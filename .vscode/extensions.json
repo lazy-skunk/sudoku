@@ -2,6 +2,6 @@
   "recommendations": [
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "vitest.explorer"
+    "github.vscode-github-actions"
   ]
 }

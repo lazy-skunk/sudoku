@@ -23,7 +23,7 @@ type InternalState = {
 
 function toCells(board: Board): Cell[][] {
   return board.map((row) =>
-    row.map((value) => ({ value, fixed: value !== 0 }))
+    row.map((value) => ({ value, fixed: value !== 0 })),
   );
 }
 
@@ -61,8 +61,8 @@ export function useSudokuState() {
     return cells.some((row, rowIndex) =>
       row.some(
         (cell, columnIndex) =>
-          !cell.fixed && cell.value !== state.initial[rowIndex][columnIndex]
-      )
+          !cell.fixed && cell.value !== state.initial[rowIndex][columnIndex],
+      ),
     );
   }, [cells, state.initial]);
 
@@ -94,7 +94,7 @@ export function useSudokuState() {
     (rowIndex: number, columnIndex: number) => {
       setSelectedCellPosition([rowIndex, columnIndex]);
     },
-    []
+    [],
   );
 
   const applyDigitInput = useCallback(
@@ -111,13 +111,13 @@ export function useSudokuState() {
           cellRow.map((cell, columnIndexValue) =>
             rowIndexValue === rowIndex && columnIndexValue === columnIndex
               ? { ...cell, value }
-              : cell
-          )
+              : cell,
+          ),
         );
         return { ...previousState, cells: nextCells };
       });
     },
-    []
+    [],
   );
 
   const toggleVerifyResultVisibility = useCallback(() => {

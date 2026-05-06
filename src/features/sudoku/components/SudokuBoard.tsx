@@ -51,7 +51,7 @@ export function SudokuBoard({
                 columnIndex === 8 && "border-r-2",
                 isSelected && "ring ring-green-500",
                 isWrongVisible && "bg-red-500/10",
-                isCorrectVisible && "bg-green-500/10"
+                isCorrectVisible && "bg-green-500/10",
               )}
               onClick={() => onSelect(rowIndex, columnIndex)}
             >
@@ -61,7 +61,7 @@ export function SudokuBoard({
                 maxLength={1}
                 className={mergeClassNames(
                   "w-full h-full text-center text-[clamp(1.5rem,5vw,2.5rem)] outline-none bg-transparent",
-                  cell.fixed ? "font-bold" : "text-green-500"
+                  cell.fixed ? "font-bold" : "text-green-500",
                 )}
                 value={cell.value === 0 ? "" : String(cell.value)}
                 onChange={(event) =>
@@ -71,7 +71,7 @@ export function SudokuBoard({
               />
             </div>
           );
-        })
+        }),
       )}
     </div>
   );
