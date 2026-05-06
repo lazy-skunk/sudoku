@@ -1,4 +1,5 @@
 import { FlatCompat } from "@eslint/eslintrc";
+import prettier from "eslint-config-prettier";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -11,14 +12,9 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  prettier,
   {
-    ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-    ],
+    ignores: [".next/**", "out/**", "build/**", "coverage/**", "next-env.d.ts"],
   },
 ];
 
