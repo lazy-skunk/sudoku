@@ -4,10 +4,9 @@ import {
   Board,
   Difficulty,
   cloneBoard,
-  emptyBoard,
   generatePuzzle,
 } from "@/features/sudoku/lib/sudoku";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export type Cell = {
   value: number;
@@ -27,14 +26,21 @@ function toCells(board: Board): Cell[][] {
   );
 }
 
+function createGameState(difficulty: Difficulty): InternalState {
+  const { puzzle, solution } = generatePuzzle(difficulty);
+  return {
+    cells: toCells(puzzle),
+    initial: puzzle,
+    solution,
+    difficulty,
+  };
+}
+
 export function useSudokuState() {
   const defaultDifficulty: Difficulty = "easy";
-  const [state, setState] = useState<InternalState>(() => ({
-    cells: toCells(emptyBoard()),
-    initial: emptyBoard(),
-    solution: emptyBoard(),
-    difficulty: defaultDifficulty,
-  }));
+  const [state, setState] = useState<InternalState>(() =>
+    createGameState(defaultDifficulty),
+  );
   const { cells, difficulty, solution: solutionBoard } = state;
 
   const [selectedCellPosition, setSelectedCellPosition] = useState<
@@ -42,20 +48,6 @@ export function useSudokuState() {
   >(null);
   const [isVerifyResultVisible, setIsVerifyResultVisible] = useState(false);
   const [isSolutionVisible, setIsSolutionVisible] = useState(false);
-
-  useEffect(() => {
-    const { puzzle, solution: generatedSolution } =
-      generatePuzzle(defaultDifficulty);
-    setState({
-      cells: toCells(puzzle),
-      initial: puzzle,
-      solution: generatedSolution,
-      difficulty: defaultDifficulty,
-    });
-    setSelectedCellPosition(null);
-    setIsVerifyResultVisible(false);
-    setIsSolutionVisible(false);
-  }, [defaultDifficulty]);
 
   const hasUserEditsSinceStart = useMemo(() => {
     return cells.some((row, rowIndex) =>
@@ -67,14 +59,7 @@ export function useSudokuState() {
   }, [cells, state.initial]);
 
   const startNewGame = useCallback((nextDifficulty: Difficulty) => {
-    const { puzzle, solution: generatedSolution } =
-      generatePuzzle(nextDifficulty);
-    setState({
-      cells: toCells(puzzle),
-      initial: puzzle,
-      solution: generatedSolution,
-      difficulty: nextDifficulty,
-    });
+    setState(createGameState(nextDifficulty));
     setSelectedCellPosition(null);
     setIsVerifyResultVisible(false);
     setIsSolutionVisible(false);
